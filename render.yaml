@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: quotefollow-ph
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 24.21.0
+      - key: NITRO_HOST
+        value: 0.0.0.0
+      - key: NITRO_PRESET
+        value: node-server
+      - key: NUXT_APP_URL
+        sync: false
+      - key: NUXT_SUPABASE_URL
+        sync: false
+      - key: NUXT_SUPABASE_ANON_KEY
+        sync: false
+      - key: NUXT_SUPABASE_SERVICE_KEY
+        sync: false
+      - key: NUXT_MAIL_PROVIDER
+        value: resend
+      - key: NUXT_RESEND_API_KEY
+        sync: false
+      - key: NUXT_MAIL_FROM
+        value: QuoteFollow PH <onboarding@resend.dev>
+      - key: NUXT_BILLING_AMOUNT
+        value: '49900'
+      - key: NUXT_BILLING_REQUIRED
+        value: 'false'
